@@ -1,0 +1,6 @@
+name: Jump
+version: '${project.version}'
+main: it.matty.jump.JumpPlugin
+api-version: 1.17
+commands:
+  jump:

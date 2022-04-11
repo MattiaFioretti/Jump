@@ -1,0 +1,24 @@
+sql:
+  hostname: localhost
+  database: jumps
+  auth:
+    username: username
+    password: password
+  useSSL: false
+  allowPublicKeyRetrieval: true
+
+gui:
+  title: "Jump GUI"
+  jump-increase:
+    material: ARROW
+    name: "&9Increase Jump Strength"
+    lore: []
+  jump-status:
+    material: FEATHER
+    name: "&2Current Jump Strength"
+    lore:
+      - "&eLevel: %jump%"
+  jump-decrease:
+    material: ARROW
+    name: "&9Decrease Jump Strength"
+    lore: []
