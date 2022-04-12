@@ -1,6 +1,5 @@
 package it.matty.jump.database;
 
-import it.matty.jump.database.enums.Query;
 import lombok.RequiredArgsConstructor;
 
 import javax.sql.rowset.CachedRowSet;
@@ -13,16 +12,15 @@ import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
 public abstract class SQLManager {
-    private final ConnectionPoolManager pool;
-
+    private final DatabaseConnector databaseConnector;
 
     public CompletableFuture<Void> executeUpdateAsync(String query, Object... args) {
         return CompletableFuture.runAsync(() -> executeUpdateSync(query, args));
     }
 
     public void executeUpdateSync(String query, Object... args) {
-        try (Connection conn = pool.getConnection();
-             PreparedStatement statement = Objects.requireNonNull(conn).prepareStatement(query)) {
+        Connection connection = databaseConnector.getConnection();
+        try (PreparedStatement statement = Objects.requireNonNull(connection).prepareStatement(query)) {
             if (args.length != 0)
                 for (int i = 1; i <= args.length; i++)
                     statement.setObject(i, args[i - 1]);
@@ -34,7 +32,8 @@ public abstract class SQLManager {
     }
 
     public CachedRowSet executeQuery(String query, Object... args) {
-        try (Connection connection = pool.getConnection(); PreparedStatement statement = connection.prepareStatement(query)) {
+        Connection connection = databaseConnector.getConnection();
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             if (args != null && args.length != 0)
                 for (int i = 1; i <= args.length; i++)
                     statement.setObject(i, args[i - 1]);

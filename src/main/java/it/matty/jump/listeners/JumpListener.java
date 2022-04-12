@@ -1,5 +1,6 @@
 package it.matty.jump.listeners;
 
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import it.matty.jump.JumpPlugin;
 import it.matty.jump.jumps.objects.JumpPlayer;
 import org.bukkit.entity.Player;
@@ -18,5 +19,11 @@ public record JumpListener(JumpPlugin plugin) implements Listener {
         player.setFlying(false);
 
         player.setVelocity(player.getLocation().getDirection().setY(jumpPlayer.getLevel()));
+    }
+
+    @EventHandler
+    public void onJump(PlayerJumpEvent event) {
+        Player player = event.getPlayer();
+        player.setAllowFlight(true);
     }
 }

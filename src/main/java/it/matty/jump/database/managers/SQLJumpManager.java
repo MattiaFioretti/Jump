@@ -1,7 +1,7 @@
 package it.matty.jump.database.managers;
 
 import it.matty.jump.JumpPlugin;
-import it.matty.jump.database.ConnectionPoolManager;
+import it.matty.jump.database.DatabaseConnector;
 import it.matty.jump.database.SQLManager;
 import it.matty.jump.database.enums.Query;
 import it.matty.jump.database.enums.Table;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class SQLJumpManager extends SQLManager {
 
-    public SQLJumpManager(ConnectionPoolManager pool, JumpPlugin plugin) {
+    public SQLJumpManager(DatabaseConnector pool, JumpPlugin plugin) {
         super(pool);
     }
 

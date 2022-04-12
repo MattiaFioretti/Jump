@@ -1,7 +1,7 @@
 package it.matty.jump;
 
 import it.matty.jump.commands.JumpCommand;
-import it.matty.jump.database.ConnectionPoolManager;
+import it.matty.jump.database.DatabaseConnector;
 import it.matty.jump.jumps.JumpAPI;
 import it.matty.jump.jumps.JumpManager;
 import it.matty.jump.listeners.InventoryListener;
@@ -12,14 +12,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
 public final class JumpPlugin extends JavaPlugin {
-    private ConnectionPoolManager poolManager;
+    private DatabaseConnector poolManager;
     private JumpAPI jumpAPI;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
-        this.poolManager = new ConnectionPoolManager(this);
+        this.poolManager = new DatabaseConnector(this);
         this.poolManager.setup();
 
         this.jumpAPI = new JumpManager(this);
