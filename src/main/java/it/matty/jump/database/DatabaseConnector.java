@@ -1,12 +1,8 @@
 package it.matty.jump.database;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import it.matty.jump.JumpPlugin;
 import it.matty.jump.database.managers.SQLJumpManager;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

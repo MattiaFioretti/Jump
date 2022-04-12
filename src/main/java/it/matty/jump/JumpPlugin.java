@@ -12,15 +12,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 @Getter
 public final class JumpPlugin extends JavaPlugin {
-    private DatabaseConnector poolManager;
+    private DatabaseConnector databaseConnector;
     private JumpAPI jumpAPI;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
-        this.poolManager = new DatabaseConnector(this);
-        this.poolManager.setup();
+        this.databaseConnector = new DatabaseConnector(this);
+        this.databaseConnector.setup();
 
         this.jumpAPI = new JumpManager(this);
 
@@ -33,6 +33,6 @@ public final class JumpPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        this.poolManager.disconnect();
+        this.databaseConnector.disconnect();
     }
 }

@@ -13,11 +13,11 @@ public class JumpPlayer {
 
     public void increases(JumpPlugin plugin) {
         level++;
-        plugin.getPoolManager().getJumpManager().updatePlayerLevel(uuid, level);
+        plugin.getDatabaseConnector().getJumpManager().updatePlayerLevel(uuid, level);
     }
 
     public void decreases(JumpPlugin plugin) {
         level--;
-        plugin.getPoolManager().getJumpManager().updatePlayerLevel(uuid, level);
+        plugin.getDatabaseConnector().getJumpManager().updatePlayerLevel(uuid, level);
     }
 }

@@ -17,7 +17,7 @@ public class JumpManager implements JumpAPI {
 
     public JumpManager(JumpPlugin plugin) {
         this.plugin = plugin;
-        this.plugin.getPoolManager().getJumpManager().loadCache(this);
+        this.plugin.getDatabaseConnector().getJumpManager().loadCache(this);
     }
 
     @Override @Nullable
@@ -28,7 +28,7 @@ public class JumpManager implements JumpAPI {
     @Override
     public void registerPlayer(OfflinePlayer player) {
         this.jumpPlayers.put(player.getUniqueId(), new JumpPlayer(player.getUniqueId(), 0));
-        this.plugin.getPoolManager().getJumpManager().registerPlayer(player);
+        this.plugin.getDatabaseConnector().getJumpManager().registerPlayer(player);
     }
 
     @Override
